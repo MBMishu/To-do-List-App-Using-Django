@@ -1,0 +1,47 @@
+ {% extends 'base.html' %} {% block home %}active {% endblock home %} {% block body %} {% if success %}
+<script>
+    swal.fire("success!", "Added successfully", "success").then(okay => {
+        if (okay) {
+            window.location.replace("");
+        }
+    });
+</script>
+{% endif %} {% load static %}
+<div class="container my-3 text-center">
+
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 mx-auto order-lg-2 order-md-2">
+            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_n7DAEZ.json" background="#343A40" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 mx-auto my-auto ">
+            <h2 class="text-center text-uppercase">add a Task</h2>
+        </div>
+
+    </div>
+
+
+
+
+
+    <div class="row" id="addTask">
+        <div class="col-lg-6 col-md-6 col-sm-12 mx-auto">
+            <form action="/" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Task Title</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Enter Task" required />
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Task description</label>
+                    <textarea name="desc" id="desc" cols="30" rows="10" class="form-control" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}
